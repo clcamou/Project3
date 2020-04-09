@@ -1,23 +1,17 @@
-const express = require("express");
-const cors = require('cors');
+let express = require("express");
+let cors = require("cors");
 const bodyParser = require("body-parser");
-const app = express();
 const db = require("./database/db");
 const PORT = process.env.PORT || 3000;
 
 // Define middleware here
+let app = express();
 app.use(bodyParser.json());
 app.use(cors());
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
+app.use(bodyParser.urlencoded({ extended: true}));
 
-// Define API routes here
-let Users = require('./routes/Users');
-// Send every other request to the React app
-// Define any API routes before this runs
+let Users = require("./routes/Users.js")
+
 app.use('/users', Users);
 
 db.sequelize.sync({ force: false }).then(function() {
