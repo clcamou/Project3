@@ -15,19 +15,19 @@ class Login extends Component {
   };
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value })
   };
   onSubmit(e) {
     e.preventDefault()
 
-    const user = {
+    const User = {
       email: this.state.email,
       password: this.state.password
     };
 
-    login(user).then(res => {
+    login(User).then(res => {
       if (res) {
-        this.props.history.push(`/profile`)
+        this.props.history.push('/profile')
       }
     });
   };
@@ -71,8 +71,8 @@ class Login extends Component {
           </div>
         </div>
       </div>
-    )
-  }
+    );
+  };
 };
 
 export default Login;

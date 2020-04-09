@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import Link  from 'react-router-dom';
 
-class Landing extends Component {
+class Navbar extends Component {
   logOut(e) {
     e.preventDefault(),
     localStorage.removeItem('usertoken'),
-    this.props.history.push(`/`)
+    this.props.history.push('/')
   };
 
   render() {
     const loginRegLink = (
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link to="/login" className="nav-link">
+          <Link to='/login' className="nav-link">
             Login
           </Link>
         </li>
@@ -27,7 +27,7 @@ class Landing extends Component {
     const userLink = (
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link to="/profile" className="nav-link">
+          <Link to='/profile' className="nav-link">
             User
           </Link>
         </li>
@@ -68,7 +68,7 @@ class Landing extends Component {
         </div>
       </nav>
     );
-  }
+  };
 };
 
-export default withRouter(Landing);
+export default (Navbar);

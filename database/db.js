@@ -1,16 +1,18 @@
-
-//Login into database using sequelize 
 const Sequelize = require('sequelize');
-const db = {};
-const sequelize = new Sequelize('nodejs_login', 'root', '', {
-    host: 'localhost', 
-    dialect: 'mysql', 
-    operatorsAliases: false, 
 
+const db = {};
+
+const sequelize = new Sequelize({
+    username: "root",
+    password: "Greenapples_45",
+    database: "logindb", 
+    host: "localhost", 
+    dialect: "mysql",
+    
     pool: {
         max: 5, 
         min: 0, 
-        acquire: 30000, 
+        acquire: 30000,
         idle: 10000
     }
 });
@@ -18,4 +20,4 @@ const sequelize = new Sequelize('nodejs_login', 'root', '', {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+module.exports = db; 
