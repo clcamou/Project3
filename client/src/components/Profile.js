@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import jwt_decode from 'jwt-decode';
+import React, { Component } from 'react'
+import jwt_decode from 'jwt-decode'
 
 class Profile extends Component {
   constructor() {
@@ -9,18 +9,18 @@ class Profile extends Component {
       last_name: '',
       email: '',
       errors: {}
-    };
-  };
+    }
+  }
 
   componentDidMount() {
-    const token = localStorage.usertoken;
-    const decoded = jwt_decode(token);
+    const token = localStorage.usertoken
+    const decoded = jwt_decode(token)
     this.setState({
       first_name: decoded.first_name,
       last_name: decoded.last_name,
       email: decoded.email
-    });
-  };
+    })
+  }
 
   render() {
     return (
@@ -47,8 +47,8 @@ class Profile extends Component {
           </table>
         </div>
       </div>
-    );
-  };
-};
+    )
+  }
+}
 
-export default Profile;
+export default Profile

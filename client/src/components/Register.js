@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { register } from '/UserFunctions';
+import React, { Component } from 'react'
+import { register } from './UserFunctions'
 
 class Register extends Component {
   constructor() {
@@ -14,11 +14,11 @@ class Register extends Component {
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-  };
+  }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
   onSubmit(e) {
     e.preventDefault()
 
@@ -30,9 +30,9 @@ class Register extends Component {
     }
 
     register(newUser).then(res => {
-      this.props.history.push('/login')
-    });
-  };
+      this.props.history.push(`/login`)
+    })
+  }
 
   render() {
     return (
@@ -95,8 +95,8 @@ class Register extends Component {
           </div>
         </div>
       </div>
-    );
-  };
-};
+    )
+  }
+}
 
-export default Register;
+export default Register

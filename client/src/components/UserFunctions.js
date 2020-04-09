@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export const register = newUser => { 
+export const register = newUser => {
   return axios
     .post('users/register', {
       first_name: newUser.first_name,
@@ -9,15 +9,15 @@ export const register = newUser => {
       password: newUser.password
     })
     .then(response => {
-      console.log('Registered', response.data)
-    });
-};
+      console.log('Registered')
+    })
+}
 
-export const login = Users => {
+export const login = user => {
   return axios
     .post('users/login', {
-      email: Users.email,
-      password: Users.password
+      email: user.email,
+      password: user.password
     })
     .then(response => {
       localStorage.setItem('usertoken', response.data)
@@ -25,5 +25,5 @@ export const login = Users => {
     })
     .catch(err => {
       console.log(err)
-    });
-};
+    })
+}

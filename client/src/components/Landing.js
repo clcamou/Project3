@@ -1,5 +1,4 @@
-
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Landing extends Component {
   render() {
@@ -11,8 +10,8 @@ class Landing extends Component {
           </div>
         </div>
       </div>
-    );
-  };
-};
+    )
+  }
+}
 
-export default Landing;
+export default Landing
