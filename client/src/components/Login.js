@@ -1,36 +1,38 @@
-import React, { Component } from 'react'
-import { login } from './UserFunctions'
+import React, { Component } from 'react';
+import { login } from './UserFunctions';
 
 class Login extends Component {
+  //use state to verify they are logged in 
   constructor() {
     super()
     this.state = {
       email: '',
       password: '',
       errors: {}
-    }
+    };
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-  }
-
+  };
+//event is targeting the name to keep the user logged in 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  //passes the object to login function when submitted. 
   onSubmit(e) {
     e.preventDefault()
 
     const user = {
       email: this.state.email,
       password: this.state.password
-    }
+    };
 
     login(user).then(res => {
       if (res) {
-        this.props.history.push(`/profile`)
+        this.props.history.push('/profile');
       }
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -72,7 +74,7 @@ class Login extends Component {
         </div>
       </div>
     )
-  }
-}
+  };
+};
 
-export default Login
+export default Login;

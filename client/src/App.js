@@ -13,6 +13,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
+          {/*Components are called here */}
           <Route exact path="/" component={Landing} />
           <div className="container">
             <Route exact path='/register' component={Register} />
@@ -22,7 +23,7 @@ class App extends Component {
         </div>
       </Router>
     )
-  };
+  } 
 };
 
 export default App;

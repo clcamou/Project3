@@ -1,13 +1,16 @@
-import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
+//allows state to be used
+import { Link, withRouter } from 'react-router-dom';
 
 class Landing extends Component {
   logOut(e) {
+    //removes token from localstorage to stop log outs
     e.preventDefault()
-    localStorage.removeItem('usertoken')
-    this.props.history.push(`/`)
-  }
+    localStorage.removeItem('usertoken');
+    this.props.history.push('/');
+  };
 
+  //login in link
   render() {
     const loginRegLink = (
       <ul className="navbar-nav">
@@ -16,14 +19,15 @@ class Landing extends Component {
             Login
           </Link>
         </li>
+        {/*Create new account link */}
         <li className="nav-item">
           <Link to="/register" className="nav-link">
             Register
           </Link>
         </li>
       </ul>
-    )
-
+    );
+//profile link 
     const userLink = (
       <ul className="navbar-nav">
         <li className="nav-item">
@@ -37,7 +41,7 @@ class Landing extends Component {
           </a>
         </li>
       </ul>
-    )
+    );
 
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
@@ -69,6 +73,6 @@ class Landing extends Component {
       </nav>
     )
   }
-}
+};
 
-export default withRouter(Landing)
+export default withRouter(Landing);

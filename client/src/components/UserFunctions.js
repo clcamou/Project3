@@ -1,5 +1,5 @@
-import axios from 'axios'
-
+import axios from 'axios';
+//create an account path 
 export const register = newUser => {
   return axios
     .post('users/register', {
@@ -10,9 +10,10 @@ export const register = newUser => {
     })
     .then(response => {
       console.log('Registered')
-    })
-}
+    });
+};
 
+//login path 
 export const login = user => {
   return axios
     .post('users/login', {
@@ -25,5 +26,5 @@ export const login = user => {
     })
     .catch(err => {
       console.log(err)
-    })
-}
+    });
+};
