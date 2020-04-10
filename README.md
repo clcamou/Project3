@@ -12,8 +12,14 @@ This application is a MERN app (MySQL, Express, React, and Node.js) that takes t
 ## Built With
 1. JavaScript
 2. Node 
-   a. Express 
-   b. 
+   a. Express (middlewear to handle routes)
+   b. bcrypt (turns passwords into hashtags)
+   c. body-parser (parse data in a json structure)
+   d. cors (handles main requestion on developer side)
+   e. jsonwebtoken (payload is encryption for auth)
+   f. mySQL (database)
+   g. mySQL2
+   h. sequelize (manages the database)
 3. CSS 
 4. HTML 
 5. Sequelize

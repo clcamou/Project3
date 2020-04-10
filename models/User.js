@@ -1,6 +1,9 @@
+//import Sequelize library 
 const Sequelize = require('sequelize');
+//connect to database
 const db = require('../database/db.js');
 
+//define the model with field of database
 module.exports = db.sequelize.define(
   'user',
   {
@@ -21,12 +24,15 @@ module.exports = db.sequelize.define(
     password: {
       type: Sequelize.STRING
     },
+    username: {
+      type: Sequelize.STRING
+    },
+    school_id: {
+      type: Sequelize.INTEGER, 
+    },
     created: {
       type: Sequelize.DATE,
       defaultValue: Sequelize.NOW
     }
   },
-  {
-    timestamps: false
-  }
 );
