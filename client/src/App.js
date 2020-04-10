@@ -7,23 +7,19 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import Register from './components/Register';
 
-class App extends Component {
-  render() {
+function App(){
     return (
       <Router>
-        <div className="App">
+        <div>
           <Navbar />
           {/*Components are called here */}
-          <Route exact path="/" component={Landing} />
-          <div className="container">
+          <Route exact path='/' component={Landing} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/profile' component={Profile} />
-          </div>
         </div>
       </Router>
     )
-  } 
-};
+  };
 
 export default App;

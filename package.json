@@ -17,6 +17,8 @@
     "mysql": "^2.14.1",
     "mysql2": "^1.7.0",
     "nodemon": "^1.18.3",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.44.4"
   }
 }

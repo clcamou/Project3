@@ -1,29 +1,33 @@
-let express = require('express');
-//used in develop to handle doman request 
-let cors = require('cors');
-//allows parsing with data in json form
-let bodyParser = require('body-parser');
-const app = express();
-//pull the data from the database
-let db = require("./database/db");
+// Requiring necessary npm packages
+const express = require("express");
+const session = require("express-session");
+// Requiring passport as we've configured it
+const passport = require("./config/passport");
 
-//set port 
-let PORT = process.env.PORT || 5000;
-//mounts the middlewear bodyParser
-app.use(bodyParser.json())
-//mounts cors 
-app.use(cors());
-//parse data with JSON like structure
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-)
-//set routes 
-let Users = require('./routes/Users')
-//moute to the users path
-app.use('/users', Users)
+// Setting up port and requiring models for syncing
+const PORT = process.env.PORT || 3000;
+let db = require("./models");
 
+let compression = require('compression');
+ 
+// add all routes
+// Creating express app and configuring middleware needed for authentication
+let app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
+app.use(compression())
+app.set("view engine", "index.html");
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Requiring our routes
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
+
+// Syncing our database and logging a message to the user upon success
 db.sequelize.sync({ force: false} ).then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);

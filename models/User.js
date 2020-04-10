@@ -1,38 +1,52 @@
-//import Sequelize library 
-const Sequelize = require('sequelize');
-//connect to database
-const db = require('../database/db.js');
-
-//define the model with field of database
-module.exports = db.sequelize.define(
-  'user',
-  {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
+// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
+const bcrypt = require("bcryptjs");
+// Creating our User model
+module.exports = function (sequelize, DataTypes) {
+  let User = sequelize.define("User", {
+    // The email cannot be null, and must be a proper email before creation
     first_name: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     last_name: {
-      type: Sequelize.STRING
-    },
-    email: {
-      type: Sequelize.STRING
-    },
-    password: {
-      type: Sequelize.STRING
-    },
-    username: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     school_id: {
-      type: Sequelize.INTEGER, 
+      type: DataTypes.INTEGER,
     },
-    created: {
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW
-    }
-  },
-);
+    username: {
+      type: DataTypes.STRING,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    }, 
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+    });
+  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
+  User.prototype.validPassword = function (password) {
+      return bcrypt.compareSync(password, this.password);
+    };
+    // Hooks are automatic methods that run during various phases of the User Model lifecycle
+    // In this case, before a User is created, we will automatically hash their password
+    User.addHook("beforeCreate", function (user) {
+      user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    });
+    User.associate = function (models) {
+      // Associating Author with Posts
+      // When an Author is deleted, also delete any associated Posts
+      User.hasMany(models.User, {
+        onDelete: "cascade"
+      });
+    };
+
+    return User;
+  };

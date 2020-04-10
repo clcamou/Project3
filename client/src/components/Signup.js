@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { register } from './UserFunctions';
 
-class Register extends Component {
+class Signup extends Component {
   //declearing initial state. 
   constructor() {
     super()
@@ -46,7 +46,7 @@ class Register extends Component {
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
             <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Register</h1>
+              <h1 className="h3 mb-3 font-weight-normal">Signup</h1>
               <div className="form-group">
                 <label htmlFor="name">First name</label>
                 <input
@@ -95,7 +95,7 @@ class Register extends Component {
                 type="submit"
                 className="btn btn-lg btn-primary btn-block"
               >
-                Register!
+                Signup!
               </button>
             </form>
           </div>
@@ -105,4 +105,4 @@ class Register extends Component {
   };
 };
 
-export default Register;
+export default Signup;
