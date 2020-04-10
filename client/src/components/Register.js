@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { register } from './UserFunctions'
+import React, { Component } from 'react';
+import { register } from './UserFunctions';
 
 class Register extends Component {
+  //declearing initial state. 
   constructor() {
     super()
     this.state = {
@@ -9,16 +10,19 @@ class Register extends Component {
       last_name: '',
       email: '',
       password: '',
+      username: '', 
+      school_id: '',
       errors: {}
     }
-
+    //change state and bind when submitted
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-  }
+  };
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
-  }
+  };
+
   onSubmit(e) {
     e.preventDefault()
 
@@ -26,13 +30,15 @@ class Register extends Component {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       email: this.state.email,
-      password: this.state.password
-    }
+      password: this.state.password,
+      username: this.state.username,
+      school_id: this.state.school_id,
+    };
 
     register(newUser).then(res => {
-      this.props.history.push(`/login`)
+      this.props.history.push('/login');
     })
-  }
+  };
 
   render() {
     return (
@@ -96,7 +102,7 @@ class Register extends Component {
         </div>
       </div>
     )
-  }
-}
+  };
+};
 
-export default Register
+export default Register;

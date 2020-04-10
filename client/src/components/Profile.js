@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import jwt_decode from 'jwt-decode'
+import React, { Component } from 'react';
+//decodes the object (user)
+import jwt_decode from 'jwt-decode';
 
 class Profile extends Component {
   constructor() {
@@ -8,19 +9,25 @@ class Profile extends Component {
       first_name: '',
       last_name: '',
       email: '',
+      username: '',
+      school_id: '',
       errors: {}
     }
-  }
-
+  };
+  
   componentDidMount() {
-    const token = localStorage.usertoken
-    const decoded = jwt_decode(token)
+    //take the login token from local storage to decode the information from the database
+    const token = localStorage.usertoken;
+    const decoded = jwt_decode(token);
+    //decode the token to get the information from the database
     this.setState({
       first_name: decoded.first_name,
       last_name: decoded.last_name,
-      email: decoded.email
-    })
-  }
+      email: decoded.email,
+      username: decoded.username, 
+      school_id: decoded.school_id
+    });
+  };
 
   render() {
     return (
@@ -48,7 +55,7 @@ class Profile extends Component {
         </div>
       </div>
     )
-  }
-}
+  };
+};
 
-export default Profile
+export default Profile;
