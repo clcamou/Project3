@@ -51,65 +51,68 @@ class LoginForm extends Component {
             })
     }
 
+
+    
+
     render() {
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
                 <div>
-                    <h4>Login</h4>
                     <div class="columns">
                         <div class="column">
-                            <div className="form-horizontal">
+                            <h4>Login</h4>
+                            <form className="form-horizontal">
                                 <div className="form-group">
-                                    <div className="col-3 col-sm-12">
-                                        <label className="form-label" htmlFor="username">Username</label>
-                                    </div>
-                                    <div className="col-9 col-sm-12">
-                                        <input className="form-input"
-                                            type="text"
-                                            id="username"
-                                            name="username"
-                                            placeholder="Username"
-                                            value={this.state.username}
-                                            onChange={this.handleChange}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-horizontal">
-                                    <div className="form-group">
-                                        <div className="col-3 col-sm-12">
-                                            <label className="form-label" htmlFor="password">Password: </label>
-                                        </div>
-                                        <div className="col-9 col-sm-12">
+                                    <div className="column">
+                                        <label className="form-label" for="username">Username</label>
+                                        <div className="column">
                                             <input className="form-input"
-                                                placeholder="password"
-                                                type="password"
-                                                name="password"
-                                                value={this.state.password}
+                                                type="text"
+                                                id="username"
+                                                name="username"
+                                                placeholder="Username"
+                                                value={this.state.username}
                                                 onChange={this.handleChange}
                                             />
                                         </div>
                                     </div>
-                                    
-                                    <div className="form-group ">
-                                        <div className="col-7"></div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                    <div className="column">
+                                        <label className="form-label" for="password">Password</label>
+                                        <input className="form-input"
+                                            placeholder="password"
+                                            type="password"
+                                            name="password"
+                                            value={this.state.password}
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                </div>
+                            </form>    
+                                    <div className="form-group">
+                                        <div className="col"></div>
                                         <button
-                                            className="btn btn-primary col-1 col-mr-auto"
+                                            className="btn btn-primary col"
                                             onClick={this.handleSubmit}
                                             type="submit">Login</button>
                                     </div>
                                 </div>
+                                <div class="divider-vert" data-content="or"></div>
+                                <div class="column">
+                                    <h4>New Users</h4>
+                                    <button 
+                                        className="btn btn-primary col"
+                                        onClick={this.handleSubmit}
+                                        type="submit">Sign Up
+                                    </button>
+                                </div>
+                                </div>
                         </div>
-                        <div class="divider text-center" data-content="or"></div>
-                        <div class="columns">
-                        <div class="column">
-                            <h4>Sign Up</h4>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
             )
         }
     }
