@@ -101,7 +101,7 @@ render() {
 							placeholder="Last Name"
 							type="last_name"
 							name="last_name"
-							value={this.state.password}
+							value={this.state.last_name}
 							onChange={this.handleChange}
 						/>
 					</div>

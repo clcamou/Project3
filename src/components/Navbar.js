@@ -27,22 +27,23 @@ class Navbar extends Component {
 
     render() {
         const loggedIn = this.props.loggedIn;
-        console.log('Navbar render, props: ')
+        console.log('navbar render, props: ')
         console.log(this.props);
+        const imageStyle = {width: 500}
 
         return (
             <div>
 
-                <header className="Navbar App-header" id="Nav-container">
+                <header className="navbar App-header" id="nav-container">
                     <div className="col-4" >
                         {loggedIn ? (
-                            <section className="Navbar-section">
+                            <section className="navbar-section">
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                     <span className="text-secondary">logout</span></Link>
 
                             </section>
                         ) : (
-                                <section className="Navbar-section">
+                                <section className="navbar-section">
                                     <Link to="/" className="btn btn-link text-secondary">
                                         <span className="text-secondary">home</span>
                                     </Link>
@@ -52,11 +53,18 @@ class Navbar extends Component {
                                     <Link to="/signup" className="btn btn-link">
                                         <span className="text-secondary">sign up</span>
                                     </Link>
+                                    <Link to="/profile" className="btn btn-link">
+                                        <span className="text-secondary">profile</span>
+                                    </Link>
+                                    <Link to="/logout" className="btn btn-link">
+                                        <span className="text-secondary">logout</span>
+                                    </Link>
                                 </section>
                             )}
                     </div>
                     <div className="col-4 col-mr-auto">
-                        <div id="top-filler"></div>
+                        <div id="top-filler">
+                        <img style={imageStyle} classname="logo" src="logo.png" alt = "The Learing Curve"/></div>
                         <h1 className="App-title">Virtual Classroom</h1>
                     </div>
                 </header>
