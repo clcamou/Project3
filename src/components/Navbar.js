@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Route, Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios'
 
@@ -28,22 +27,22 @@ class Navbar extends Component {
 
     render() {
         const loggedIn = this.props.loggedIn;
-        console.log('navbar render, props: ')
+        console.log('Navbar render, props: ')
         console.log(this.props);
 
         return (
             <div>
 
-                <header className="navbar App-header" id="nav-container">
+                <header className="Navbar App-header" id="Nav-container">
                     <div className="col-4" >
                         {loggedIn ? (
-                            <section className="navbar-section">
+                            <section className="Navbar-section">
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                     <span className="text-secondary">logout</span></Link>
 
                             </section>
                         ) : (
-                                <section className="navbar-section">
+                                <section className="Navbar-section">
                                     <Link to="/" className="btn btn-link text-secondary">
                                         <span className="text-secondary">home</span>
                                     </Link>

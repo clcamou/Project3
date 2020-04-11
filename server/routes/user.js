@@ -19,7 +19,11 @@ router.post('/', (req, res) => {
         else {
             const newUser = new User({
                 username: username,
-                password: password
+                password: password, 
+                first_name: first_name,
+                last_name: last_name,
+                school_id: school_id,
+                email: email,
             })
             newUser.save((err, savedUser) => {
                 if (err) return res.json(err)

@@ -1,18 +1,44 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const Sequelize = require('sequelize');
+const db = require('../db');
 const bcrypt = require('bcryptjs');
 Sequelize.promise = Promise
 
-// Define userSchema
-const userSchema = new Schema({
+//define the model with field of database
+db.sequelize.define(
+	'User',
+	{
+	  id: {
+		type: Sequelize.INTEGER,
+		primaryKey: true,
+		autoIncrement: true
+	  },
+	  first_name: {
+		type: Sequelize.STRING
+	  },
+	  last_name: {
+		type: Sequelize.STRING
+	  },
+	  email: {
+		type: Sequelize.STRING
+	  },
+	  password: {
+		type: Sequelize.STRING
+	  },
+	  username: {
+		type: Sequelize.STRING
+	  },
+	  school_id: {
+		type: Sequelize.INTEGER, 
+	  },
+	  created: {
+		type: Sequelize.DATE,
+		defaultValue: Sequelize.NOW
+	  }
+	},
+  );
 
-	username: { type: String, unique: false, required: false },
-	password: { type: String, unique: false, required: false }
-
-})
-
-// Define schema methods
-userSchema.methods = {
+// Define methods
+user.methods = {
 	checkPassword: function (inputPassword) {
 		return bcrypt.compareSync(inputPassword, this.password)
 	},
@@ -22,9 +48,9 @@ userSchema.methods = {
 }
 
 // Define hooks for pre-saving
-userSchema.pre('save', function (next) {
+user.pre('save', function (next) {
 	if (!this.password) {
-		console.log('models/user.js =======NO PASSWORD PROVIDED=======')
+		console.log('models/user.js Please enter in password')
 		next()
 	} else {
 		console.log('models/user.js hashPassword in pre save');
@@ -34,5 +60,5 @@ userSchema.pre('save', function (next) {
 	}
 })
 
-const User = Sequelize.model('User', userSchema)
+const User = Sequelize.model('User', user)
 module.exports = User
