@@ -20,7 +20,7 @@ This application is a MERN app (MySQL, Express, React, and Node.js) that takes t
    f. mySQL (database)
    g. mySQL2
    h. sequelize (manages the database)
-3. CSS 
+3. CSS/Spectre (styling)
 4. HTML 
 5. Sequelize
 6. MySQL 
