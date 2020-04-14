@@ -60,8 +60,8 @@ class LoginForm extends Component {
         } else {
             return (
                 <div>
-                    <div class="columns">
-                        <div class="column">
+                    <div className="columns">
+                        <div className="column">
                             <h4>Login</h4>
                             <form className="form-horizontal">
                                 <div className="form-group">

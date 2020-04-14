@@ -1,41 +1,40 @@
 import React, { Component } from 'react';
-//decodes the object (user)
-import jwt_decode from 'jwt-decode';
+
 
 class Profile extends Component {
-  constructor() {
-    super()
-    this.state = {
-      first_name: '',
-      last_name: '',
-      email: '',
-      username: '',
-      school_id: '',
-      errors: {}
-    }
-  };
-  
-  componentDidMount() {
-    //take the login token from local storage to decode the information from the database
-    const token = localStorage.usertoken;
-    const decoded = jwt_decode(token);
-    //decode the token to get the information from the database
-    this.setState({
-      first_name: decoded.first_name,
-      last_name: decoded.last_name,
-      email: decoded.email,
-      username: decoded.username, 
-      school_id: decoded.school_id
-    });
-  };
+  constructor(props) {
+    super(props);
 
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      activeTab: '1'
+    };
+  }
+
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
+  }
   render() {
     return (
-        <div>
-        <h4>Profile</h4>
-            <h1 className="text-center">PROFILE</h1>
-          </div>
+      <div>
+        <div className="Container">
+          <h4>Profile</h4>
+          <h1 className="display-3">Profile</h1>
+          <p className="lead">Summary</p>
+          <figure className="avatar avatar-xl">
+            <img scr="imag/avatar-1.png" alt="..."></img>
+          </figure>
+        </div>
+        
+      </div>
     )
-}}
+  }
+}
+
+
 
 export default Profile;

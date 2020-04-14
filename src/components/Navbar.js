@@ -29,7 +29,8 @@ class Navbar extends Component {
         const loggedIn = this.props.loggedIn;
         console.log('navbar render, props: ')
         console.log(this.props);
-        const imageStyle = { width: 500 }
+        const imageStyle = { width: 500 };
+        const avatar = { }
 
         return (
             <div>
@@ -43,48 +44,51 @@ class Navbar extends Component {
                                 </section>
                             </div>
                         </div>
-                    <div className="container">
+                        <div className="container">
                             <div className="columns">
-                                    <div className="column col-4-mr-auto">
-                                        {loggedIn ? (
+                                <div className="column col-4-mr-auto">
+                                    {loggedIn ? (
+                                        <section className="navbar-section">
+                                            <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
+                                                <span className="text-secondary">logout</span></Link>
+                                        </section>
+                                    ) : (
                                             <section className="navbar-section">
-                                                <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                                                    <span className="text-secondary">logout</span></Link>
+                                                <Link to="/" className="btn btn-link text-secondary">
+                                                    <span className="text-secondary">home</span>
+                                                </Link>
+                                                <Link to="/login" className="btn btn-link text-secondary">
+                                                    <span className="text-secondary">login</span>
+                                                </Link>
+                                                <Link to="/signup" className="btn btn-link">
+                                                    <span className="text-secondary">sign up</span>
+                                                </Link>
+                                                <Link to="/profile" className="btn btn-link">
+                                                    <span className="text-secondary">profile</span>
+                                                </Link>
+                                                <Link to="/logout" className="btn btn-link">
+                                                    <span className="text-secondary">logout</span>
+                                                </Link>
                                             </section>
-                                        ) : (
-                                                <section className="navbar-section">
-                                                    <Link to="/" className="btn btn-link text-secondary">
-                                                        <span className="text-secondary">home</span>
-                                                    </Link>
-                                                    <Link to="/login" className="btn btn-link text-secondary">
-                                                        <span className="text-secondary">login</span>
-                                                    </Link>
-                                                    <Link to="/signup" className="btn btn-link">
-                                                        <span className="text-secondary">sign up</span>
-                                                    </Link>
-                                                    <Link to="/profile" className="btn btn-link">
-                                                        <span className="text-secondary">profile</span>
-                                                    </Link>
-                                                    <Link to="/logout" className="btn btn-link">
-                                                        <span className="text-secondary">logout</span>
-                                                    </Link>
-                                                </section>
-                                            )}
-                                    </div>
+                                        )}
+                                </div>
                                 <div className="column-mr-auto">
                                     <section className="navbar-section">
-                                        <div className='input-group input-inline'>
-                                            <input className="form-input" type="text" placeholder="search" />
-                                            <button className="btn btn-primary input-group-btn"><i class="icon icon-search"></i></button>
-                                        </div>
+
+                                        <button className="btn btn-link text-secondary"><i class="icon icon-message"></i></button>
+
+                                        <button className="btn btn-link text-secondary"><i class="icon icon-mail"></i></button>
+
+                                        <figure className="avatar" src="avatar avatar-xl" data-initial="cc" style={avatar} alt="CC"> <i className="avatar-presence online"></i></figure>
+
                                     </section>
                                 </div>
+                                </div>
                             </div>
-                        </div>
                     </header>
                 </div>
-            </div>
-        
+                </div>
+
         );
 
     }
