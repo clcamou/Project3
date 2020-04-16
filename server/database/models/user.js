@@ -44,7 +44,11 @@ user.methods = {
 	},
 	hashPassword: plainTextPassword => {
 		return bcrypt.hashSync(plainTextPassword, 10)
-	}
+	},
+	AssociateWithSchool: function(school){
+		this.school_id = school
+		await this.save()
+		return
 }
 
 // Define hooks for pre-saving
